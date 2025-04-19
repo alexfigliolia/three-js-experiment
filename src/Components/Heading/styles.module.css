@@ -1,0 +1,38 @@
+.heading {
+  line-height: 1;
+  text-transform: uppercase;
+  font-family: var(--font-bowlby);
+  &.xs {
+    font-size: 1em;
+  }
+  &.sm {
+    font-size: 1.25em;
+    @media (min-width: 670px) {
+      font-size: 1.5em;
+    }
+    @media (min-width: 957px) {
+      font-size: 1.75em;
+    }
+  }
+  &.md {
+    font-size: 1.5em;
+    @media (min-width: 670px) {
+      font-size: 1.75em;
+    }
+    @media (min-width: 957px) {
+      font-size: 2em;
+    }
+  }
+  &.lg {
+    font-size: min(6vw, 9vh, 150px);
+  }
+  &.xl {
+    font-size: 2em;
+    @media (min-width: 670px) {
+      font-size: 3em;
+    }
+    @media (min-width: 957px) {
+      font-size: 4em;
+    }
+  }
+}

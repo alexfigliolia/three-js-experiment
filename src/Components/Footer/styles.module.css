@@ -1,0 +1,43 @@
+.footer {
+  color: #fff;
+  overflow: hidden;
+  background-color: #181818;
+  &>.boards {
+    height: 75vh;
+    position: relative;
+    padding: 1.5em;
+    @media (min-width: 670px) {
+      padding: 2.5em;
+    }
+    &>img {
+      object-fit: cover;
+    }
+    &>.logo {
+      position: relative;
+      height: 4em;
+      width: auto;
+      pointer-events: none;
+      mix-blend-mode: exclusion;
+      @media (min-width: 670px) {
+        height: 5em;
+      }
+    }
+    &>.physics {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+  }
+  & .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    list-style-type: none;
+    & a:hover {
+      text-decoration: underline;
+    }
+  }
+}

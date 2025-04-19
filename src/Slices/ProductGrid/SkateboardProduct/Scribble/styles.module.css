@@ -1,0 +1,6 @@
+.scribblePath > path {
+  opacity: 0.6;
+  transition: stroke-dashoffset 0.5s;
+  stroke-dasharray: 1700;
+  stroke-dashoffset: 1700;
+}

@@ -1,0 +1,8 @@
+{
+  "repositoryName": "three-js-experiment",
+  "adapter": "@slicemachine/adapter-next",
+  "libraries": [
+    "./src/Slices"
+  ],
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+}

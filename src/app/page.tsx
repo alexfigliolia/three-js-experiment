@@ -1,95 +1,73 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { type Metadata } from "next";
+import { notFound } from "next/navigation";
+import { asImageSrc, Content } from "@prismicio/client";
+import { SliceComponentProps, SliceZone } from "@prismicio/react";
+import { components } from "Slices/index";
+import { createClient } from "@/prismicio";
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+const Components = {
+  ...components,
+  text_and_image_bundle: ({
+    slice,
+  }: SliceComponentProps<TextAndImageBundle>) => (
+    <div>
+      <SliceZone slices={slice.slices} components={components} />
     </div>
+  ),
+};
+
+export default async function Page() {
+  const client = createClient();
+  const page = await client.getSingle("home_page").catch(() => notFound());
+  return (
+    <SliceZone
+      components={Components}
+      slices={bundleTextAndImageSlices(page.data.slices)}
+    />
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const page = await client.getSingle("home_page").catch(() => notFound());
+
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+    openGraph: {
+      images: [{ url: asImageSrc(page.data.meta_image) ?? "" }],
+    },
+  };
+}
+
+function bundleTextAndImageSlices(
+  slices: Content.HomePageDocumentDataSlicesSlice[],
+) {
+  const result: (
+    | Content.HomePageDocumentDataSlicesSlice
+    | TextAndImageBundle
+  )[] = [];
+  for (const slice of slices) {
+    if (slice.slice_type !== "text_and_image") {
+      result.push(slice);
+      continue;
+    }
+    const top = result.at(-1);
+    if (top?.slice_type === "text_and_image_bundle") {
+      top.slices.push(slice);
+    } else {
+      result.push({
+        id: `${slice.id}-bundle`,
+        slice_type: "text_and_image_bundle",
+        slices: [slice],
+      });
+    }
+  }
+  return result;
+}
+
+interface TextAndImageBundle {
+  id: string;
+  slice_type: "text_and_image_bundle";
+  slices: Content.HomePageDocumentDataSlicesSlice[];
 }

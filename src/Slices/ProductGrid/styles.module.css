@@ -1,0 +1,28 @@
+.productGrid {
+  background: var(--gray);
+  & p {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.heading {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  gap: 1.5em;
+  margin-top: 3em;
+  list-style-type: none;
+  grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 670px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (min-width: 957px) {
+    gap: 3em;
+  }
+}

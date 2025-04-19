@@ -1,0 +1,59 @@
+.skater {
+  position: relative;
+  display: flex;
+  gap: 1em;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  &:hover {
+    &>.images {
+      &>.bg {
+        scale: 1;
+        filter: brightness(75%) saturate(0.8);
+      }
+      &>.fg {
+        scale: 1.1;
+      }
+      &>.scribble > path {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
+  &>.images {
+    width: 100%;
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    grid-template-areas: "stack";
+    place-items: center;
+    &>* {
+      grid-area: stack;
+    }
+    &>img {
+      width: 100%;
+      height: auto;
+      transition: all 1s ease-in-out;
+    }
+    &>.bg {
+      scale: 1.1;
+    }
+    &>.fg {
+      z-index: 2;
+    }
+    &>.scribble {
+      position: relative;
+    }
+    &>h3 {
+      display: flex;
+      gap: 0.3em;
+      width: 100%;
+      z-index: 3;
+      color: var(--gray);
+      flex-direction: column;
+      place-self: end start;
+      padding: 0.3em;
+      background-image: linear-gradient(to top, #000, transparent);
+    }
+  }
+}

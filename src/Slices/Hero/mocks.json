@@ -1,0 +1,40 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Driven"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Id do magna est esse ad esse. Magna et deserunt labore id tempor laboris est laboris aute est culpa officia aliqua."
+						}
+					}
+				]
+			},
+			"button": {
+				"key": "f507f75c-045e-4ec9-b404-24e459027706",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "anywhere"
+				}
+			}
+		},
+		"items": []
+	}
+]
