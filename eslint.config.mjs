@@ -22,6 +22,8 @@ const eslintConfig = [
       "import/first": "error",
       "import/newline-after-import": "error",
       "import/no-duplicates": "error",
+      "@typescript-eslint/ban-ts-comment": 0,
+      "@typescript-eslint/no-explicit-any": 0,
       "@typescript-eslint/no-unused-vars": [
         "error",
         {

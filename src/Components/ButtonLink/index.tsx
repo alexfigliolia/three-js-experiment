@@ -1,8 +1,8 @@
 import { FaCartShopping, FaPlus } from "react-icons/fa6";
 import { useClassNames } from "@figliolia/classnames";
 import { PrismicNextLink, PrismicNextLinkProps } from "@prismicio/next";
+import { SkateboardIcon } from "Icons/Skateboard";
 import UtilityStyles from "Styles/Utilities.module.css";
-import { SkateboardIcon } from "@/Icons/Skateboard";
 import styles from "./styles.module.css";
 
 export function ButtonLink({
@@ -38,6 +38,6 @@ export function ButtonLink({
 
 export type Props = PrismicNextLinkProps & {
   color?: "orange" | "purple" | "lime";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   icon?: "cart" | "skateboard" | "plus";
 };

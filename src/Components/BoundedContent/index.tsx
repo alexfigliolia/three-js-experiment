@@ -10,6 +10,7 @@ export const BoundedContent = ({
 }: Props) => {
   const classes = useClassNames(styles.boundedContent, className);
   return (
+    // @ts-ignore "come back to me"
     <Comp className={classes} style={style}>
       <div>{children}</div>
     </Comp>

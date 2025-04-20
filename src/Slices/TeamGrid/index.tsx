@@ -2,9 +2,10 @@ import { FC } from "react";
 import { classnames } from "@figliolia/classnames";
 import { Content } from "@prismicio/client";
 import { PrismicText, SliceComponentProps } from "@prismicio/react";
+import { BoundedContent } from "Components/BoundedContent";
+import { Heading } from "Components/Heading";
+import { SlideIn } from "Components/SlideIn";
 import UtilityStyles from "Styles/Utilities.module.css";
-import { BoundedContent } from "@/Components/BoundedContent";
-import { Heading } from "@/Components/Heading";
 import { createClient } from "@/prismicio";
 import { Skater } from "./Skater";
 import styles from "./styles.module.css";
@@ -25,15 +26,19 @@ const TeamGrid: FC<TeamGridProps> = async ({ slice }) => {
       className={classnames(styles.teamGrid, UtilityStyles.bgTexture)}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}>
-      <Heading as="h2">
-        <PrismicText field={slice.primary.heading} />
-      </Heading>
+      <SlideIn>
+        <Heading as="h2">
+          <PrismicText field={slice.primary.heading} />
+        </Heading>
+      </SlideIn>
       <ul>
         {skaters.map(
           (skater, i) =>
             skater.data.first_name && (
               <li key={skater.id}>
-                <Skater index={i} {...skater.data} />
+                <SlideIn>
+                  <Skater index={i} {...skater.data} />
+                </SlideIn>
               </li>
             ),
         )}

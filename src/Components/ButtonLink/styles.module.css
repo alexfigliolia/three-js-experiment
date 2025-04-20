@@ -21,6 +21,11 @@
     font-size: 1em;
     padding: 0.5em;
   }
+  &.xl {
+    gap: 1.1em;
+    font-size: 1.25em;
+    padding: 0.1em 0.5em;
+  }
   &.orange {
     background-color: var(--orange);
     &:hover {
@@ -59,6 +64,10 @@
     &.lg {
       width: 2em;
       height: 2em;
+    }
+    &.xl {
+      width: 3em;
+      height: 3em;
     }
     &>svg {
       width: 100%;

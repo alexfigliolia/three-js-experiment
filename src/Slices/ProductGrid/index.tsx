@@ -8,6 +8,7 @@ import {
 } from "@prismicio/react";
 import { BoundedContent } from "Components/BoundedContent";
 import { Heading } from "Components/Heading";
+import { SlideIn } from "Components/SlideIn";
 import UtilityStyles from "Styles/Utilities.module.css";
 import { SkateboardProduct } from "./SkateboardProduct";
 import styles from "./styles.module.css";
@@ -27,10 +28,12 @@ const ProductGrid: FC<ProductGridProps> = ({ slice }) => {
       className={classes}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}>
-      <Heading as="h2" size="lg" className={styles.heading}>
-        <PrismicText field={slice.primary.heading} />
-      </Heading>
-      <PrismicRichText field={slice.primary.body} />
+      <SlideIn>
+        <Heading as="h2" size="lg" className={styles.heading}>
+          <PrismicText field={slice.primary.heading} />
+        </Heading>
+        <PrismicRichText field={slice.primary.body} />
+      </SlideIn>
       <ul className={styles.grid}>
         {slice.primary.products.map(
           ({ skateboard }) =>

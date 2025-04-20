@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "Components/Logo";
-import { Propless } from "@/Types/React";
+import { Propless } from "Types/React";
 import { ButtonLink } from "../ButtonLink";
 import { Navigation } from "./Navigation";
 import styles from "./styles.module.css";

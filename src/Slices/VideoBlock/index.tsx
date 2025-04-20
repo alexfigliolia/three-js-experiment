@@ -3,8 +3,8 @@ import { FC } from "react";
 import { useClassNames } from "@figliolia/classnames";
 import { Content, isFilled } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import { BoundedContent } from "Components/BoundedContent";
 import UtilityStyles from "Styles/Utilities.module.css";
-import { BoundedContent } from "@/Components/BoundedContent";
 import { LazyYouTubePlayer } from "./LazyYoutubePlayer";
 import styles from "./styles.module.css";
 

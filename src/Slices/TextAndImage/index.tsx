@@ -7,9 +7,10 @@ import {
   SliceComponentProps,
 } from "@prismicio/react";
 import { BoundedContent } from "Components/BoundedContent";
+import { ButtonLink } from "Components/ButtonLink";
+import { Heading } from "Components/Heading";
+import { SlideIn } from "Components/SlideIn";
 import UtilityStyles from "Styles/Utilities.module.css";
-import { ButtonLink } from "@/Components/ButtonLink";
-import { Heading } from "@/Components/Heading";
 import { ParallaxImage } from "./ParallaxImage";
 import styles from "./styles.module.css";
 
@@ -36,16 +37,22 @@ const TextAndImage: FC<TextAndImageProps> = ({ slice, index }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}>
       <div className={styles.content}>
-        <Heading as="h2" size="lg" className={styles.heading}>
-          <PrismicText field={slice.primary.heading} />
-        </Heading>
-        <PrismicRichText field={slice.primary.body} />
-        <ButtonLink
-          field={slice.primary.button}
-          size="lg"
-          color={theme === "Lime" ? "orange" : "lime"}>
-          {slice.primary.button.text}
-        </ButtonLink>
+        <SlideIn>
+          <Heading as="h2" size="lg" className={styles.heading}>
+            <PrismicText field={slice.primary.heading} />
+          </Heading>
+        </SlideIn>
+        <SlideIn>
+          <PrismicRichText field={slice.primary.body} />
+        </SlideIn>
+        <SlideIn>
+          <ButtonLink
+            field={slice.primary.button}
+            size="lg"
+            color={theme === "Lime" ? "orange" : "lime"}>
+            {slice.primary.button.text}
+          </ButtonLink>
+        </SlideIn>
       </div>
       <ParallaxImage
         background={slice.primary.background_image}

@@ -24,7 +24,7 @@
     }
   }
   &.lg {
-    font-size: min(6vw, 9vh, 150px);
+    font-size: min(9vw, 9vh, 150px);
   }
   &.xl {
     font-size: 2em;

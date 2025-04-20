@@ -51,7 +51,7 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 1.5em;
-    &>p {
+    & p {
       line-height: 1.65;
     }
   }  

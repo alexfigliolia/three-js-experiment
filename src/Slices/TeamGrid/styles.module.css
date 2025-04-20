@@ -1,7 +1,7 @@
 .teamGrid {
   background-color: var(--navy);
   &>div {
-    &>h2 {
+    & h2 {
       width: 100%;
       text-align: center;
       margin-bottom: 0.5em;

@@ -7,9 +7,11 @@ import {
   SliceComponentProps,
 } from "@prismicio/react";
 import { BoundedContent } from "Components/BoundedContent";
+import { ButtonLink } from "Components/ButtonLink";
+import { Heading } from "Components/Heading";
 import Globals from "Styles/Utilities.module.css";
-import { ButtonLink } from "@/Components/ButtonLink";
-import { Heading } from "@/Components/Heading";
+import { useImageSource } from "Tools/useImageSource";
+import { InteractiveSkateboard } from "./InteractiveSkateboard";
 import styles from "./styles.module.css";
 import { TallLogo } from "./TallLogo";
 import { WideLogo } from "./WideLogo";
@@ -24,6 +26,17 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero: FC<HeroProps> = ({ slice }) => {
   const classes = useClassNames(styles.hero, Globals.bgTexture);
+  const {
+    body,
+    button,
+    heading,
+    skateboard_bolt_color,
+    skateboard_truck_color,
+    skateboard_deck_texture,
+    skateboard_wheel_texture,
+  } = slice.primary;
+  const deckTexture = useImageSource(skateboard_deck_texture);
+  const wheelTexture = useImageSource(skateboard_wheel_texture);
   return (
     <BoundedContent
       className={classes}
@@ -32,15 +45,20 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       <WideLogo className={styles.wideLogo} />
       <TallLogo className={styles.tallLogo} />
       <Heading size="lg" className={styles.heading}>
-        <PrismicText field={slice.primary.heading} />
+        <PrismicText field={heading} />
       </Heading>
-      <div className={styles.content}></div>
       <div className={styles.meta}>
-        <PrismicRichText field={slice.primary.body} />
-        <ButtonLink size="lg" field={slice.primary.button} icon="skateboard">
-          {slice.primary.button.text}
+        <PrismicRichText field={body} />
+        <ButtonLink size="xl" field={button} icon="skateboard">
+          {button.text}
         </ButtonLink>
       </div>
+      <InteractiveSkateboard
+        deckTextureURL={deckTexture}
+        wheelTextureURL={wheelTexture}
+        boltColor={skateboard_bolt_color ?? undefined}
+        truckColor={skateboard_truck_color ?? undefined}
+      />
     </BoundedContent>
   );
 };

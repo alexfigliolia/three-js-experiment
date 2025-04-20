@@ -1,4 +1,4 @@
-import { Propless } from "@/Types/React";
+import { Propless } from "Types/React";
 import styles from "./styles.module.css";
 
 export function SVGFilters(_: Propless) {

@@ -1,7 +1,7 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
+import { ButtonLink } from "Components/ButtonLink";
 import { Heading } from "Components/Heading";
-import { ButtonLink } from "@/Components/ButtonLink";
 import { SkaterScribble } from "./SkaterScribble";
 import styles from "./styles.module.css";
 
