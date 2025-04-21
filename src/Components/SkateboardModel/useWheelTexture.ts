@@ -1,11 +1,7 @@
-import { SRGBColorSpace } from "three";
-import { useTexture } from "@react-three/drei";
+import { useSRGBTexture } from "./useSRGBTexture";
 
-export const useWheelTexture = (
-  url: string = "/skateboard/SkateWheel1.png",
+export const useWheelTexture = <T extends string | string[]>(
+  urls = "/skateboard/SkateWheel1.png" as T,
 ) => {
-  const wheelTexture = useTexture(url);
-  wheelTexture.flipY = false;
-  wheelTexture.colorSpace = SRGBColorSpace;
-  return wheelTexture;
+  return useSRGBTexture(urls);
 };

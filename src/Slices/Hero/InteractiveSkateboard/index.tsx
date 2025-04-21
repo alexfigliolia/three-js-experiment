@@ -88,22 +88,6 @@ function Scene({ wheelTextureURL, deckTextureURL, ...rest }: Props) {
     }
   });
 
-  // gsap rotation with damping
-  // useEffect(() => {
-  //   if (!controller || !controller.current?.wheels?.current?.length) {
-  //     return;
-  //   }
-  //   for (const wheel of controller.current.wheels.current) {
-  //     if (wheel) {
-  //       gsap.to(wheel.rotation, {
-  //         x: "+=30",
-  //         duration: 2.5,
-  //         ease: "circ.out",
-  //       });
-  //     }
-  //   }
-  // }, [wheelTextureURL]);
-
   const onClick = useCallback((e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation();
     if (!container.current || !origin.current) {

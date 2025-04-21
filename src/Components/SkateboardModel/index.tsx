@@ -32,7 +32,7 @@ type GLTFResult = GLTF & {
 };
 
 export const SkateboardModel = forwardRef(function SkateboardModel(
-  { wheelTexture, deckTexture, boltColor, truckColor }: Props,
+  { wheelTexture, deckTexture, boltColor, truckColor, pos = "upright" }: Props,
   ref: ForwardedRef<SMController>,
 ) {
   const { nodes } = useGLTF("/skateboard.gltf") as unknown as GLTFResult;
@@ -59,10 +59,22 @@ export const SkateboardModel = forwardRef(function SkateboardModel(
     [cacheObjectReference],
   );
 
+  const positions = useMemo(
+    () =>
+      ({
+        side: { rotation: [0, 0, Math.PI / 2], position: [0, 0.295, 0] },
+        upright: { rotation: [0, 0, 0], position: [0, 0, 0] },
+      }) as const,
+    [],
+  );
+
   useImperativeHandle(ref, () => ({ wheels: wheelRefs }), [wheelRefs]);
 
   return (
-    <group dispose={null}>
+    <group
+      dispose={null}
+      rotation={positions[pos].rotation}
+      position={positions[pos].position}>
       <group name="Scene">
         <mesh
           name="GripTape"
@@ -164,6 +176,7 @@ export interface Props {
   truckColor?: string;
   deckTexture: Texture;
   wheelTexture: Texture;
+  pos?: "upright" | "side";
 }
 
 export interface SMController {

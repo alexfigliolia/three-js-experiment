@@ -1,0 +1,99 @@
+.buildPage {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  flex-direction: column;
+  @media (min-width: 957px) {
+    flex-direction: row;
+  }
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #3a414a;
+  height: 70vh;
+  height: 70dvh;
+  @media (min-width: 957px) {
+    aspect-ratio: none;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  &>.logo {
+    top: 1em;
+    left: 1em;
+    color: #fff;
+    position: absolute;
+    &>svg {
+      height: 3em;
+      width: auto;
+    }
+  }
+  &>.canvasContainer {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+}
+
+.options {
+  color: #fff;
+  width: 100%;
+  min-height: 30vh;
+  min-height: 30dvh;
+  background-color: #232425;
+  padding: 2em 1em;
+  @media (min-width: 670px) {
+    padding: 1.5em;
+  }
+  @media (min-width: 957px) {
+    width: 450px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+    overflow-y: scroll;
+  }
+  &>h1 {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  &>.controls {
+    margin-bottom: 1em;
+  }
+  &>a {
+    margin-top: 1.5em;
+  }
+}
+
+.loading {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  position: absolute;
+  background-color: var(--navy);
+  color: #fff;
+  font-size: 15vw;
+  transition: opacity 1s;
+  font-family: var(--font-bowlby);
+  &.loadingComplete {
+    pointer-events: none;
+    opacity: 0;
+  }
+  &>.logo {
+    height: 15vw;
+    color: var(--pink);
+  }
+  &>p {
+    width: 100%;
+    text-align: center;
+    color: var(--lime);
+  }
+}
