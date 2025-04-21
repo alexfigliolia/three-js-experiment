@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import { useClassNames } from "@figliolia/classnames";
 import { Content } from "@prismicio/client";
 import {
@@ -41,24 +41,30 @@ const Hero: FC<HeroProps> = ({ slice }) => {
     <BoundedContent
       className={classes}
       data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}>
-      <WideLogo className={styles.wideLogo} />
-      <TallLogo className={styles.tallLogo} />
-      <Heading size="lg" className={styles.heading}>
-        <PrismicText field={heading} />
-      </Heading>
-      <div className={styles.meta}>
-        <PrismicRichText field={body} />
-        <ButtonLink size="xl" field={button} icon="skateboard">
-          {button.text}
-        </ButtonLink>
+      data-slice-variation={slice.variation}
+      decorativeNodes={
+        <Fragment>
+          <WideLogo className={styles.wideLogo} />
+          <TallLogo className={styles.tallLogo} />
+          <InteractiveSkateboard
+            deckTextureURL={deckTexture}
+            wheelTextureURL={wheelTexture}
+            boltColor={skateboard_bolt_color ?? undefined}
+            truckColor={skateboard_truck_color ?? undefined}
+          />
+        </Fragment>
+      }>
+      <div className={styles.content}>
+        <Heading size="lg">
+          <PrismicText field={heading} />
+        </Heading>
+        <div className={styles.meta}>
+          <PrismicRichText field={body} />
+          <ButtonLink size="xl" field={button} icon="skateboard">
+            {button.text}
+          </ButtonLink>
+        </div>
       </div>
-      <InteractiveSkateboard
-        deckTextureURL={deckTexture}
-        wheelTextureURL={wheelTexture}
-        boltColor={skateboard_bolt_color ?? undefined}
-        truckColor={skateboard_truck_color ?? undefined}
-      />
     </BoundedContent>
   );
 };

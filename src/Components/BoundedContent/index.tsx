@@ -7,12 +7,14 @@ export const BoundedContent = ({
   className,
   style,
   children,
+  decorativeNodes,
 }: Props) => {
   const classes = useClassNames(styles.boundedContent, className);
   return (
     // @ts-ignore "come back to me"
     <Comp className={classes} style={style}>
-      <div>{children}</div>
+      {decorativeNodes}
+      <div className={styles.content}>{children}</div>
     </Comp>
   );
 };
@@ -22,4 +24,5 @@ interface Props {
   className?: string;
   style?: CSSProperties;
   children: ReactNode;
+  decorativeNodes?: ReactNode;
 }

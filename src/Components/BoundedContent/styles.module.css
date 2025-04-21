@@ -8,8 +8,9 @@
   @media (min-width: 957px) {
     padding: 4em 2em;
   }
-  &>div {
+  &>.content {
     width: 100%;
+    position: relative;
     max-width: 1000px;
   }
 }
