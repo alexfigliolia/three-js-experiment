@@ -2,7 +2,6 @@
   background-color: var(--pink);
   position: relative;
   height: 100vh;
-  height: 100dvh;
   width: 100%;
   overflow: hidden;
   padding-top: calc(var(--header-height) * 1.25);
@@ -43,9 +42,15 @@
       width: 100%;
       max-width: 600px;
       text-align: left;
-      font-size: 1.25em;
+      font-size: 1em;
       font-weight: 800;
       line-height: 1.65;
+      @media (min-width: 670px) {
+        font-size: 1.15em;
+      }
+      @media (min-width: 957px) {
+        font-size: 1.25em;
+      }
     }
   }
 }

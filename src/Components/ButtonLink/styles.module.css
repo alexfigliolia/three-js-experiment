@@ -23,8 +23,13 @@
   }
   &.xl {
     gap: 1.1em;
-    font-size: 1.25em;
-    padding: 0.1em 0.5em;
+    font-size: 1em;
+    padding: 0.5em;
+    @media (min-width: 957px) {
+      gap: 1.1em;
+      font-size: 1.25em;
+      padding: 0.1em 0.5em;
+    }
   }
   &.orange {
     background-color: var(--orange);
@@ -66,8 +71,12 @@
       height: 2em;
     }
     &.xl {
-      width: 3em;
-      height: 3em;
+      width: 2em;
+      height: 2em;
+      @media (min-width: 957px) {
+        width: 3em;
+        height: 3em;
+      }
     }
     &>svg {
       width: 100%;

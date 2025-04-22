@@ -2,7 +2,6 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
-  min-height: 100dvh;
   flex-direction: column;
   @media (min-width: 957px) {
     flex-direction: row;
@@ -15,11 +14,9 @@
   position: relative;
   background-color: #3a414a;
   height: 70vh;
-  height: 70dvh;
   @media (min-width: 957px) {
     aspect-ratio: none;
     min-height: 100vh;
-    min-height: 100dvh;
   }
   &>.logo {
     top: 1em;
@@ -44,7 +41,6 @@
   color: #fff;
   width: 100%;
   min-height: 30vh;
-  min-height: 30dvh;
   background-color: #232425;
   padding: 2em 1em;
   @media (min-width: 670px) {
@@ -53,9 +49,7 @@
   @media (min-width: 957px) {
     width: 450px;
     min-height: 100vh;
-    min-height: 100dvh;
     max-height: 100vh;
-    max-height: 100dvh;
     overflow-y: scroll;
   }
   &>h1 {
@@ -74,7 +68,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: grid;
   place-content: center;
   position: absolute;

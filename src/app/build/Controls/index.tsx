@@ -28,7 +28,7 @@ export const Controls = ({ wheels, decks, metals, className }: Props) => {
     if (isFilled.keyText(truck?.uid)) {
       url.searchParams.set("truck", truck.uid);
     }
-    router.replace(url.href);
+    router.replace(url.href, { scroll: false });
   }, [router, wheel, deck, truck, bolt]);
 
   return (

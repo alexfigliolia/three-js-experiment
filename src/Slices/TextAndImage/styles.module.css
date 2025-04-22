@@ -1,6 +1,5 @@
 .textAndImage {
   height: auto;
-  min-height: 100dvh;
   min-height: 100vh;
   position: sticky;
   top: 0;
