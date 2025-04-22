@@ -45,7 +45,7 @@ function Scene({ wheelTextureURL, deckTextureURL, ...rest }: Props) {
     camera.lookAt(new Vector3(-0.2, 0.15, 0));
 
     function setZoom() {
-      const scale = Math.max(Math.min(1000 / window.innerWidth, 2.2), 1);
+      const scale = Math.max(Math.min(800 / window.innerWidth, 2.2), 1);
       camera.position.x = CAMERA_POSITION[0] * scale;
       camera.position.y = CAMERA_POSITION[1] * scale;
       camera.position.z = CAMERA_POSITION[2] * scale;
